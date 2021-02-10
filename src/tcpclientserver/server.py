@@ -12,6 +12,16 @@ while True:
     clientSocket, address = serverSocket.accept()
     print(f"Connection with {address} established")
 
-    clientSocket.send("Hello! You are connected to the server. Bye!".encode())
+    clientSocket.send("Hello! You are connected to the server!".encode())
 
-    clientSocket.close()
+    while True:
+        msg = clientSocket.recv(1024).decode()
+        print("Client typed: " + msg)
+
+        if msg == "Bye":
+            clientSocket.send("Server is closing".encode())
+            print(f"Server has disconnected from {address}")
+            clientSocket.close()
+            break
+
+    break
