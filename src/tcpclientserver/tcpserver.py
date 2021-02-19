@@ -2,7 +2,7 @@ import socket
 
 serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-serverSocket.bind(('0.0.0.0', 2345))
+serverSocket.bind(('192.168.56.1', 2345))
 
 serverSocket.listen(1)
 
